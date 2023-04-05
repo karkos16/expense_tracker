@@ -8,7 +8,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -16,10 +15,10 @@ import com.example.expensetracker.ui.theme.*
 
 @Composable
 fun ImageWithDescription(imageID: Int, bigText: String = "Test", smallText: String = "Test") {
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(modifier = Modifier.fillMaxWidth().height(550.dp)) {
         Box(
             modifier = Modifier
-                .padding(start = 31.dp, top = 52.dp)
+                .padding(start = 31.dp)
                 .width(312.dp)
                 .height(312.dp),
             contentAlignment = Alignment.Center
