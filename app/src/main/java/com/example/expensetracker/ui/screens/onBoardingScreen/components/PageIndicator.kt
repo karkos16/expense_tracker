@@ -1,8 +1,7 @@
-package com.example.expensetracker.ui.screens.onBoardingScreens.components
+package com.example.expensetracker.ui.screens.onBoardingScreen.components
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable

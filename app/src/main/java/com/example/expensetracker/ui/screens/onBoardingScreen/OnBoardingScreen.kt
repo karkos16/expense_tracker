@@ -1,27 +1,19 @@
-package com.example.expensetracker.ui.screens.onBoardingScreens
+package com.example.expensetracker.ui.screens.onBoardingScreen
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.example.expensetracker.ui.screens.onBoardingScreens.components.ImageWithDescription
-import com.example.expensetracker.ui.screens.onBoardingScreens.components.LongButton
-import com.example.expensetracker.ui.screens.onBoardingScreens.components.PageIndicator
+import com.example.expensetracker.ui.screens.onBoardingScreen.components.ImageWithDescription
+import com.example.expensetracker.ui.screens.onBoardingScreen.components.LongButton
+import com.example.expensetracker.ui.screens.onBoardingScreen.components.PageIndicator
 import com.example.expensetracker.ui.theme.*
 
 @SuppressLint("DiscouragedApi")
@@ -63,7 +55,7 @@ fun OnBoardingScreen() {
             )
         }
         PageIndicator(pageCount = images.size, currentPage = pagerState.currentPage)
-        LongButton(backgroundColor = Violet100, textColor = Violet80, text = "Sign Up")
+        LongButton(backgroundColor = Violet100, textColor = BaseLight80, text = "Sign Up")
         LongButton(backgroundColor = Violet20, textColor = Violet100, text = "Login")
     }
 }
