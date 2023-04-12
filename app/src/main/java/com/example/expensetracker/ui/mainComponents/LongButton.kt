@@ -17,8 +17,8 @@ import androidx.compose.ui.unit.sp
 fun LongButton(
     backgroundColor: Color,
     textColor: Color,
-    text: String
-//    onClickAction: Unit
+    text: String,
+    onClickAction: () -> Unit
 ) {
     Box(modifier = Modifier
         .fillMaxWidth()
@@ -28,7 +28,7 @@ fun LongButton(
         Button(
             modifier = Modifier
                 .fillMaxSize(),
-            onClick = { Log.d("KLIK", "KLIK") },
+            onClick = onClickAction,
             content = { Text(text = text, textAlign = TextAlign.Center, fontSize = 18.sp)},
             colors = ButtonDefaults.buttonColors(backgroundColor = backgroundColor, contentColor = textColor),
             shape = RoundedCornerShape(16.dp)

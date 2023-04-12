@@ -27,7 +27,8 @@ fun LoginScreen() {
         InputField(label = "Email", isPasswordType = false)
         InputField(label = "Passwoerd", isPasswordType = true)
         Spacer(modifier = Modifier.height(30.dp))
-        LongButton(backgroundColor = Violet100, textColor = BaseLight80, text = "Login")
+        LongButton(backgroundColor = Violet100, textColor = BaseLight80, text = "Login",
+            { println("KLIK") })
         Spacer(modifier = Modifier.height(10.dp))
         Text(text = "Forgot Password?", color = Violet100, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
         Spacer(modifier = Modifier.height(15.dp))

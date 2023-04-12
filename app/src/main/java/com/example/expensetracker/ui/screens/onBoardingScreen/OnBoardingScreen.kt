@@ -11,33 +11,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.expensetracker.ui.screens.onBoardingScreen.components.ImageWithDescription
 import com.example.expensetracker.ui.screens.onBoardingScreen.components.LongButton
 import com.example.expensetracker.ui.screens.onBoardingScreen.components.PageIndicator
 import com.example.expensetracker.ui.theme.*
+import com.example.expensetracker.viewModels.OnBoardingViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 @SuppressLint("DiscouragedApi")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnBoardingScreen() {
-    val context = LocalContext.current
-    val images = listOf(
-        listOf<Any>(
-            context.resources.getIdentifier("money", "drawable", context.packageName),
-            "Gain total control of your money",
-            "Become your own money manager and make every cent count"
-        ),
-        listOf<Any>(
-            context.resources.getIdentifier("money_go", "drawable", context.packageName),
-            "Know where your money goes",
-            "Track your transaction easily, with categories and financial report"
-        ),
-        listOf<Any>(
-            context.resources.getIdentifier("planing", "drawable", context.packageName),
-            "Planing ahead",
-            "Setup your budget for each category so you in control"
-        )
-    )
+fun OnBoardingScreen(viewModel: OnBoardingViewModel = hiltViewModel()) {
+    val images = viewModel.getImageIds()
     val pagerState = rememberPagerState()
     Column(
         modifier = Modifier
@@ -55,8 +41,8 @@ fun OnBoardingScreen() {
             )
         }
         PageIndicator(pageCount = images.size, currentPage = pagerState.currentPage)
-        LongButton(backgroundColor = Violet100, textColor = BaseLight80, text = "Sign Up")
-        LongButton(backgroundColor = Violet20, textColor = Violet100, text = "Login")
+        LongButton(backgroundColor = Violet100, textColor = BaseLight80, text = "Sign Up", viewModel.navigateToSignUpScreen())
+        LongButton(backgroundColor = Violet20, textColor = Violet100, text = "Login", viewModel.navigateToLoginScreen())
     }
 }
 

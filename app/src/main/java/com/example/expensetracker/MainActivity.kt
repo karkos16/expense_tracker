@@ -26,14 +26,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    LoginScreen()
+                    OnBoardingScreen()
                 }
             }
         }
     }
-}
-
-@Composable
-fun Greeting() {
-    Text(text = "Tutaj bedzie appka")
 }

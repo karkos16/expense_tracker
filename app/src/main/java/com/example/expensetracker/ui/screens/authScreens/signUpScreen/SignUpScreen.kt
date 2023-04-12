@@ -26,7 +26,9 @@ import com.example.expensetracker.ui.theme.Violet100
 @Composable
 fun SignUpScreen() {
     val context = LocalContext.current
-    Column(modifier = Modifier.fillMaxSize().background(Color.White)) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .background(Color.White)) {
         TopNavigation(
             text = "Sign Up",
             onClickNavigation = { Toast.makeText(
@@ -41,7 +43,8 @@ fun SignUpScreen() {
             item { InputField(label = "Password", isPasswordType = true) }
             item { TermsAgreement() }
             item { Spacer(modifier = Modifier.height(8.dp)) }
-            item { LongButton(backgroundColor = Violet100, textColor = BaseLight80, text = "Sign Up") }
+            item { LongButton(backgroundColor = Violet100, textColor = BaseLight80, text = "Sign Up",
+                { println("KLIK") }) }
             item { Text(
                 text = "Or with",
                 fontSize = 14.sp,
