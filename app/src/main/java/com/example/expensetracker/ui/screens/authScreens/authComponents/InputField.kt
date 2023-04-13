@@ -28,7 +28,9 @@ import com.example.expensetracker.ui.theme.BaseLight60
 @Composable
 fun InputField(
     label: String,
-    isPasswordType: Boolean
+    isPasswordType: Boolean,
+    value: String,
+    onValueChange: (String) -> Unit
 ) {
     var text by remember { mutableStateOf("") }
     var passwordVisibility by remember { mutableStateOf(false) }
@@ -42,8 +44,8 @@ fun InputField(
 
     if (isPasswordType) {
         OutlinedTextField(
-            value = text,
-            onValueChange = { newValue -> text = newValue },
+            value = value,
+            onValueChange = onValueChange,
             modifier = Modifier
                 .padding(horizontal = 16.dp, vertical = 12.dp)
                 .fillMaxWidth(),
@@ -63,8 +65,8 @@ fun InputField(
         )
     } else {
         OutlinedTextField(
-            value = text,
-            onValueChange = { newValue -> text = newValue },
+            value = value,
+            onValueChange = onValueChange,
             modifier = Modifier
                 .padding(horizontal = 16.dp, vertical = 12.dp)
                 .fillMaxWidth(),
@@ -73,12 +75,10 @@ fun InputField(
             colors = colors
         )
     }
-
-
 }
 
 @Composable
 @Preview(showBackground = true)
 fun InputFieldPreview() {
-    InputField(label = "Name", isPasswordType = true)
+    InputField(label = "Name", isPasswordType = true, "", {it -> it})
 }

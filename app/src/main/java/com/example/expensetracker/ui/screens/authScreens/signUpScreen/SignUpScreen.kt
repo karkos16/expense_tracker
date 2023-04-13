@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -14,6 +15,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.expensetracker.ui.screens.authScreens.authComponents.TopNavigation
 import com.example.expensetracker.ui.screens.authScreens.authComponents.InputField
 import com.example.expensetracker.ui.screens.authScreens.signUpScreen.signUpComponents.SignUpGoogleButton
@@ -22,9 +24,14 @@ import com.example.expensetracker.ui.screens.onBoardingScreen.components.LongBut
 import com.example.expensetracker.ui.theme.BaseLight20
 import com.example.expensetracker.ui.theme.BaseLight80
 import com.example.expensetracker.ui.theme.Violet100
+import com.example.expensetracker.ui.viewModels.SignUpViewModel
 
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(viewModel: SignUpViewModel = hiltViewModel()) {
+    val name = viewModel.nameState.collectAsState()
+    val email = viewModel.emailState.collectAsState()
+    val password = viewModel.passwordState.collectAsState()
+    val check = viewModel.termsState.collectAsState()
     val context = LocalContext.current
     Column(modifier = Modifier
         .fillMaxSize()
@@ -38,13 +45,29 @@ fun SignUpScreen() {
             ).show() }
         )
         LazyColumn(modifier = Modifier.fillMaxSize()) {
-            item { InputField(label = "Name", isPasswordType = false) }
-            item { InputField(label = "Email", isPasswordType = false) }
-            item { InputField(label = "Password", isPasswordType = true) }
-            item { TermsAgreement() }
+            item { InputField(
+                label = "Name",
+                isPasswordType = false,
+                name.value,
+            ) { viewModel.onNameChanged(it) } }
+            item { InputField(
+                label = "Email",
+                isPasswordType = false,
+                email.value
+            ) { viewModel.onEmailChanged(it) } }
+            item { InputField(
+                label = "Password",
+                isPasswordType = true,
+                password.value
+            ) {viewModel.onPasswordChanged(it)} }
+            item { TermsAgreement(check.value) {viewModel.onTermsChanged()} }
             item { Spacer(modifier = Modifier.height(8.dp)) }
-            item { LongButton(backgroundColor = Violet100, textColor = BaseLight80, text = "Sign Up",
-                { println("KLIK") }) }
+            item { LongButton(
+                backgroundColor = Violet100,
+                textColor = BaseLight80,
+                text = "Sign Up",
+                viewModel.signUp()
+            )}
             item { Text(
                 text = "Or with",
                 fontSize = 14.sp,
@@ -73,7 +96,6 @@ fun SignUpScreen() {
             }
         }
     }
-
 }
 
 @Composable

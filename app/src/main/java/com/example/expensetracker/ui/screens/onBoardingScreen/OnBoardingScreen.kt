@@ -16,7 +16,7 @@ import com.example.expensetracker.ui.screens.onBoardingScreen.components.ImageWi
 import com.example.expensetracker.ui.screens.onBoardingScreen.components.LongButton
 import com.example.expensetracker.ui.screens.onBoardingScreen.components.PageIndicator
 import com.example.expensetracker.ui.theme.*
-import com.example.expensetracker.viewModels.OnBoardingViewModel
+import com.example.expensetracker.ui.viewModels.OnBoardingViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 
 @SuppressLint("DiscouragedApi")

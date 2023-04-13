@@ -1,4 +1,4 @@
-package com.example.expensetracker.viewModels
+package com.example.expensetracker.ui.viewModels
 
 import android.util.Log
 import android.widget.Toast
@@ -29,7 +29,6 @@ class OnBoardingViewModel @Inject constructor(): ViewModel() {
             "Setup your budget for each category so you in control"
         )
     )
-    private var pagerState: Int = 0
 
     fun getImageIds(): List<List<Any>> {
         return images
