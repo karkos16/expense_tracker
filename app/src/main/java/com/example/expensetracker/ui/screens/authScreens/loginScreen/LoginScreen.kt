@@ -15,8 +15,10 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.expensetracker.ui.screens.NavGraphs
 import com.example.expensetracker.ui.screens.authScreens.authComponents.InputField
 import com.example.expensetracker.ui.screens.authScreens.authComponents.TopNavigation
+import com.example.expensetracker.ui.screens.destinations.OnBoardingScreenDestination
 import com.example.expensetracker.ui.screens.onBoardingScreen.components.LongButton
 import com.example.expensetracker.ui.theme.BaseLight20
 import com.example.expensetracker.ui.theme.BaseLight80
@@ -34,7 +36,10 @@ fun LoginScreen(
     Column(modifier = Modifier.fillMaxSize()) {
         val emailState = viewModel.emailState.collectAsState()
         val passwordState = viewModel.emailState.collectAsState()
-        TopNavigation(text = "Login", { Log.d("KLIK", "Wroc")})
+        TopNavigation(
+            text = "Login",
+            onClickNavigation = { navigator.navigate(OnBoardingScreenDestination()) {popUpTo(OnBoardingScreenDestination.route)} }
+        )
         InputField(
             label = "Email",
             isPasswordType = false,

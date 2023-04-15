@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.expensetracker.ui.screens.destinations.LoginScreenDestination
 import com.example.expensetracker.ui.screens.destinations.SignUpScreenDestination
 import com.example.expensetracker.ui.screens.onBoardingScreen.components.ImageWithDescription
 import com.example.expensetracker.ui.screens.onBoardingScreen.components.LongButton
@@ -49,8 +50,15 @@ fun OnBoardingScreen(
             )
         }
         PageIndicator(pageCount = images.size, currentPage = pagerState.currentPage)
-        LongButton(backgroundColor = Violet100, textColor = BaseLight80, text = "Sign Up"
+        LongButton(
+            backgroundColor = Violet100,
+            textColor = BaseLight80,
+            text = "Sign Up"
         ) { navigator.navigate(SignUpScreenDestination()) }
-        LongButton(backgroundColor = Violet20, textColor = Violet100, text = "Login", viewModel.navigateToLoginScreen())
+        LongButton(
+            backgroundColor = Violet20,
+            textColor = Violet100,
+            text = "Login"
+        ) { navigator.navigate(LoginScreenDestination()) }
     }
 }

@@ -16,10 +16,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.expensetracker.ui.screens.NavGraphs
 import com.example.expensetracker.ui.screens.authScreens.authComponents.TopNavigation
 import com.example.expensetracker.ui.screens.authScreens.authComponents.InputField
 import com.example.expensetracker.ui.screens.authScreens.signUpScreen.signUpComponents.SignUpGoogleButton
 import com.example.expensetracker.ui.screens.authScreens.signUpScreen.signUpComponents.TermsAgreement
+import com.example.expensetracker.ui.screens.destinations.OnBoardingScreenDestination
 import com.example.expensetracker.ui.screens.onBoardingScreen.components.LongButton
 import com.example.expensetracker.ui.theme.BaseLight20
 import com.example.expensetracker.ui.theme.BaseLight80
@@ -44,11 +46,7 @@ fun SignUpScreen(
         .background(Color.White)) {
         TopNavigation(
             text = "Sign Up",
-            onClickNavigation = { Toast.makeText(
-                context,
-                "Wroc",
-                Toast.LENGTH_LONG
-            ).show() }
+            onClickNavigation = { navigator.navigate(OnBoardingScreenDestination()) {popUpTo(OnBoardingScreenDestination.route)} }
         )
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             item { InputField(

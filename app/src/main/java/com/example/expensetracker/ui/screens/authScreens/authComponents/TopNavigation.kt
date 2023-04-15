@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -26,15 +27,20 @@ fun TopNavigation(
         .padding(16.dp),
         contentAlignment = Alignment.Center
     ) {
-        Icon(
-            imageVector = Icons.Default.ArrowBack,
-            contentDescription = "Back arrow",
+        IconButton(
+            onClick = onClickNavigation,
             modifier = Modifier
                 .fillMaxHeight()
                 .width(32.dp)
-                .clickable { onClickNavigation }
-                .align(Alignment.CenterStart)
-        )
+                .align(
+                    Alignment.CenterStart
+                )
+        ) {
+            Icon(
+                imageVector = Icons.Default.ArrowBack,
+                contentDescription = "Back arrow"
+            )
+        }
         Text(
             text = text,
             textAlign = TextAlign.Center,
