@@ -7,6 +7,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import com.example.expensetracker.R
 import com.example.expensetracker.ui.screens.authScreens.loginScreen.LoginScreen
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

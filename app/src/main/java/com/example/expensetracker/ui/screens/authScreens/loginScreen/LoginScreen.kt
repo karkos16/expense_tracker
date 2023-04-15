@@ -22,9 +22,15 @@ import com.example.expensetracker.ui.theme.BaseLight20
 import com.example.expensetracker.ui.theme.BaseLight80
 import com.example.expensetracker.ui.theme.Violet100
 import com.example.expensetracker.ui.viewModels.LoginViewModel
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
+@Destination
 @Composable
-fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {
+fun LoginScreen(
+    viewModel: LoginViewModel = hiltViewModel(),
+    navigator: DestinationsNavigator
+) {
     Column(modifier = Modifier.fillMaxSize()) {
         val emailState = viewModel.emailState.collectAsState()
         val passwordState = viewModel.emailState.collectAsState()
@@ -59,10 +65,4 @@ fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {
             )
         }
     }
-}
-
-@Composable
-@Preview(showBackground = true)
-fun LoginScreenPreview() {
-    LoginScreen()
 }

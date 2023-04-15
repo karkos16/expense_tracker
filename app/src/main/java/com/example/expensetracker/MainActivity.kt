@@ -10,24 +10,22 @@ import androidx.compose.material.Text
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.example.expensetracker.ui.screens.NavGraphs
 import com.example.expensetracker.ui.screens.authScreens.loginScreen.LoginScreen
 import com.example.expensetracker.ui.screens.authScreens.signUpScreen.SignUpScreen
 import com.example.expensetracker.ui.screens.onBoardingScreen.OnBoardingScreen
 import com.example.expensetracker.ui.theme.ExpenseTrackerTheme
+import com.ramcosta.composedestinations.DestinationsNavHost
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             ExpenseTrackerTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    SignUpScreen()
-                }
+                DestinationsNavHost(navGraph = NavGraphs.root)
             }
         }
     }

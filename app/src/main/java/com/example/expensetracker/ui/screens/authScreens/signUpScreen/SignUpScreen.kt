@@ -25,9 +25,15 @@ import com.example.expensetracker.ui.theme.BaseLight20
 import com.example.expensetracker.ui.theme.BaseLight80
 import com.example.expensetracker.ui.theme.Violet100
 import com.example.expensetracker.ui.viewModels.SignUpViewModel
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
+@Destination
 @Composable
-fun SignUpScreen(viewModel: SignUpViewModel = hiltViewModel()) {
+fun SignUpScreen(
+    viewModel: SignUpViewModel = hiltViewModel(),
+    navigator: DestinationsNavigator
+) {
     val name = viewModel.nameState.collectAsState()
     val email = viewModel.emailState.collectAsState()
     val password = viewModel.passwordState.collectAsState()
@@ -96,10 +102,4 @@ fun SignUpScreen(viewModel: SignUpViewModel = hiltViewModel()) {
             }
         }
     }
-}
-
-@Composable
-@Preview(showBackground = true)
-fun SignUpScreenPreview() {
-    SignUpScreen()
 }
