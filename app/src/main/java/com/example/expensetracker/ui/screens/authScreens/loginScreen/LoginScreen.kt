@@ -38,7 +38,11 @@ fun LoginScreen(
         val passwordState = viewModel.emailState.collectAsState()
         TopNavigation(
             text = "Login",
-            onClickNavigation = { navigator.navigate(OnBoardingScreenDestination()) {popUpTo(OnBoardingScreenDestination.route)} }
+            onClickNavigation = {
+                navigator.navigate(OnBoardingScreenDestination()) {
+                    popUpTo(OnBoardingScreenDestination.route)
+                }
+            }
         )
         InputField(
             label = "Email",

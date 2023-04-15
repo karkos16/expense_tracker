@@ -46,7 +46,11 @@ fun SignUpScreen(
         .background(Color.White)) {
         TopNavigation(
             text = "Sign Up",
-            onClickNavigation = { navigator.navigate(OnBoardingScreenDestination()) {popUpTo(OnBoardingScreenDestination.route)} }
+            onClickNavigation = {
+                navigator.navigate(OnBoardingScreenDestination()) {
+                    popUpTo(OnBoardingScreenDestination.route)
+                }
+            }
         )
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             item { InputField(
