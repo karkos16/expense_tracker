@@ -29,6 +29,9 @@ import com.example.expensetracker.ui.theme.Violet100
 import com.example.expensetracker.ui.viewModels.SignUpViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @Destination
 @Composable
@@ -74,8 +77,9 @@ fun SignUpScreen(
                 backgroundColor = Violet100,
                 textColor = BaseLight80,
                 text = "Sign Up",
-                viewModel.signUp()
-            )}
+                onClickAction = viewModel.signUp()
+            )
+            }
             item { Text(
                 text = "Or with",
                 fontSize = 14.sp,

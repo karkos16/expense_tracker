@@ -35,7 +35,7 @@ fun LoginScreen(
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         val emailState = viewModel.emailState.collectAsState()
-        val passwordState = viewModel.emailState.collectAsState()
+        val passwordState = viewModel.passwordState.collectAsState()
         TopNavigation(
             text = "Login",
             onClickNavigation = {
@@ -55,7 +55,7 @@ fun LoginScreen(
             passwordState.value
         ) { viewModel.onPasswordChanged(it) }
         Spacer(modifier = Modifier.height(30.dp))
-        LongButton(backgroundColor = Violet100, textColor = BaseLight80, text = "Login", { println("KLIK") })
+        LongButton(backgroundColor = Violet100, textColor = BaseLight80, text = "Login", viewModel.login())
         Spacer(modifier = Modifier.height(10.dp))
         Text(text = "Forgot Password?", color = Violet100, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
         Spacer(modifier = Modifier.height(15.dp))

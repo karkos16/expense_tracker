@@ -32,7 +32,6 @@ fun InputField(
     value: String,
     onValueChange: (String) -> Unit
 ) {
-    var text by remember { mutableStateOf("") }
     var passwordVisibility by remember { mutableStateOf(false) }
 
     val icon = if (passwordVisibility)
@@ -75,10 +74,4 @@ fun InputField(
             colors = colors
         )
     }
-}
-
-@Composable
-@Preview(showBackground = true)
-fun InputFieldPreview() {
-    InputField(label = "Name", isPasswordType = true, "", {it -> it})
 }

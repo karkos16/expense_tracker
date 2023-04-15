@@ -2,13 +2,18 @@ package com.example.expensetracker.ui.viewModels
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.expensetracker.repos.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 @HiltViewModel
-class SignUpViewModel @Inject constructor(): ViewModel() {
+class SignUpViewModel @Inject constructor(private val authRepository: AuthRepository): ViewModel() {
 
     private var _nameState = MutableStateFlow("")
     val nameState: StateFlow<String> = _nameState
@@ -40,9 +45,9 @@ class SignUpViewModel @Inject constructor(): ViewModel() {
 
     fun signUp(): () -> Unit {
         return {
-            Log.d("AUTH", "Name: ${_nameState.value}")
-            Log.d("AUTH", "Email: ${_emailState.value}")
-            Log.d("AUTH", "Password: ${_passwordState.value}")
+            CoroutineScope(Dispatchers.IO).launch {
+                authRepository.signUpWithEmailAndPassword(_emailState.value, _passwordState.value)
+            }
         }
     }
 
