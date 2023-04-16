@@ -1,7 +1,7 @@
 package com.example.expensetracker.di
 
 import com.example.expensetracker.repos.AuthRepository
-import com.example.expensetracker.reposImpl.AuthRepositoryImpl
+import com.example.expensetracker.domain.reposImpl.AuthRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides

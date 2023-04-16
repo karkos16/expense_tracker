@@ -1,4 +1,4 @@
-package com.example.expensetracker.reposImpl
+package com.example.expensetracker.domain.reposImpl
 
 import android.util.Log
 import com.example.expensetracker.repos.AuthRepository

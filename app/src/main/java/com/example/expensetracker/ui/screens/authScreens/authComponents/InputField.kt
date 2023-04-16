@@ -30,7 +30,8 @@ fun InputField(
     label: String,
     isPasswordType: Boolean,
     value: String,
-    onValueChange: (String) -> Unit
+    onValueChange: (String) -> Unit,
+    isError: String?
 ) {
     var passwordVisibility by remember { mutableStateOf(false) }
 
@@ -45,6 +46,7 @@ fun InputField(
         OutlinedTextField(
             value = value,
             onValueChange = onValueChange,
+            isError = isError != null,
             modifier = Modifier
                 .padding(horizontal = 16.dp, vertical = 12.dp)
                 .fillMaxWidth(),

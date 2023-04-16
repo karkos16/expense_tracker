@@ -15,6 +15,7 @@ import com.example.expensetracker.ui.screens.authScreens.loginScreen.LoginScreen
 import com.example.expensetracker.ui.screens.authScreens.signUpScreen.SignUpScreen
 import com.example.expensetracker.ui.screens.onBoardingScreen.OnBoardingScreen
 import com.example.expensetracker.ui.theme.ExpenseTrackerTheme
+import com.google.firebase.auth.FirebaseAuth
 import com.ramcosta.composedestinations.DestinationsNavHost
 import dagger.hilt.android.AndroidEntryPoint
 

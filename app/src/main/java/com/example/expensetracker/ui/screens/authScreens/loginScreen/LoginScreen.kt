@@ -1,12 +1,16 @@
 package com.example.expensetracker.ui.screens.authScreens.loginScreen
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
@@ -15,6 +19,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.expensetracker.ui.onEvents.LoginFormEvent
 import com.example.expensetracker.ui.screens.NavGraphs
 import com.example.expensetracker.ui.screens.authScreens.authComponents.InputField
 import com.example.expensetracker.ui.screens.authScreens.authComponents.TopNavigation
@@ -26,6 +31,8 @@ import com.example.expensetracker.ui.theme.Violet100
 import com.example.expensetracker.ui.viewModels.LoginViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 
 @Destination
 @Composable
@@ -34,8 +41,18 @@ fun LoginScreen(
     navigator: DestinationsNavigator
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
-        val emailState = viewModel.emailState.collectAsState()
-        val passwordState = viewModel.passwordState.collectAsState()
+        val state = viewModel.state
+        val context = LocalContext.current
+        LaunchedEffect(key1 = Dispatchers.IO) {
+            viewModel.validationEvents.collect { event ->
+                if (viewModel.login()) {
+                    Toast.makeText(context, "Login successful", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+
         TopNavigation(
             text = "Login",
             onClickNavigation = {
@@ -47,15 +64,27 @@ fun LoginScreen(
         InputField(
             label = "Email",
             isPasswordType = false,
-            emailState.value
-        ) { viewModel.onEmailChanged(it) }
+            value = state.email,
+            onValueChange = { viewModel.onEvent(LoginFormEvent.EmailChanged(it)) },
+            isError = state.emailError
+        )
+        if (state.emailError != null) {
+            Text(text = state.emailError, color = MaterialTheme.colors.error)
+        }
         InputField(
             label = "Password",
             isPasswordType = true,
-            passwordState.value
-        ) { viewModel.onPasswordChanged(it) }
+            value = state.password,
+            onValueChange = { viewModel.onEvent(LoginFormEvent.PasswordChanged(it)) },
+            isError = null
+        )
         Spacer(modifier = Modifier.height(30.dp))
-        LongButton(backgroundColor = Violet100, textColor = BaseLight80, text = "Login", viewModel.login())
+        LongButton(
+            backgroundColor = Violet100,
+            textColor = BaseLight80,
+            text = "Login",
+            onClickAction = { viewModel.onEvent(LoginFormEvent.Submit) }
+        )
         Spacer(modifier = Modifier.height(10.dp))
         Text(text = "Forgot Password?", color = Violet100, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
         Spacer(modifier = Modifier.height(15.dp))
