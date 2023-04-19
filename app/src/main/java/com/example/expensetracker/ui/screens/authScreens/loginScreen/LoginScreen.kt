@@ -1,30 +1,27 @@
 package com.example.expensetracker.ui.screens.authScreens.loginScreen
 
-import android.util.Log
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.expensetracker.ui.onEvents.LoginFormEvent
-import com.example.expensetracker.ui.screens.NavGraphs
 import com.example.expensetracker.ui.screens.authScreens.authComponents.InputField
 import com.example.expensetracker.ui.screens.authScreens.authComponents.TopNavigation
 import com.example.expensetracker.ui.screens.destinations.OnBoardingScreenDestination
-import com.example.expensetracker.ui.screens.onBoardingScreen.components.LongButton
+import com.example.expensetracker.ui.screens.onBoardingScreens.components.LongButton
 import com.example.expensetracker.ui.theme.BaseLight20
 import com.example.expensetracker.ui.theme.BaseLight80
 import com.example.expensetracker.ui.theme.Violet100
@@ -32,7 +29,6 @@ import com.example.expensetracker.ui.viewModels.LoginViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 
 @Destination
 @Composable
@@ -40,7 +36,7 @@ fun LoginScreen(
     viewModel: LoginViewModel = hiltViewModel(),
     navigator: DestinationsNavigator
 ) {
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize().background(Color.White)) {
         val state = viewModel.state
         val context = LocalContext.current
         LaunchedEffect(key1 = Dispatchers.IO) {

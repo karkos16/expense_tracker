@@ -1,4 +1,4 @@
-package com.example.expensetracker.ui.screens.onBoardingScreen.components
+package com.example.expensetracker.ui.screens.onBoardingScreens.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*

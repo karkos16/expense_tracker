@@ -1,6 +1,5 @@
-package com.example.expensetracker.ui.screens.onBoardingScreen.components
+package com.example.expensetracker.ui.screens.onBoardingScreens.components
 
-import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
