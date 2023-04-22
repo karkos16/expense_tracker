@@ -2,6 +2,7 @@ package com.example.expensetracker.ui.viewModels
 
 import androidx.lifecycle.ViewModel
 import com.example.expensetracker.repos.AuthRepository
+import com.google.firebase.auth.EmailAuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

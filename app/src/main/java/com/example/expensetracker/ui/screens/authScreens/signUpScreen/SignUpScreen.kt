@@ -44,24 +44,22 @@ fun SignUpScreen(
         viewModel.validationEvents.collect { event ->
             when(event) {
                 is SignUpViewModel.ValidationEvent.Success -> {
-                    if (viewModel.signUp()) {
-                        Toast.makeText(
-                            context,
-                            "Sign up successful",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    } else {
-                        Toast.makeText(
-                            context,
-                            "Sign up failed",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
+                    Toast.makeText(
+                        context,
+                        "Sign up successful ${viewModel.getUserName()}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                is SignUpViewModel.ValidationEvent.Failure -> {
+                    Toast.makeText(
+                        context,
+                        "Sign Up failed. Something went wrong",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         }
     }
-
     Column(modifier = Modifier
         .fillMaxSize()
         .background(Color.White)) {
@@ -81,8 +79,11 @@ fun SignUpScreen(
                 onValueChange = {
                         viewModel.onEvent(RegistrationFormEvent.NameChanged(it))
                     },
-                isError = null
+                isError = state.nameError
                 )
+                if (state.nameError != null) {
+                    Text(text = state.nameError, color = MaterialTheme.colors.error)
+                }
             }
             item { InputField(
                 label = "Email",
