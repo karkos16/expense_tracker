@@ -31,7 +31,7 @@ fun InputField(
     isPasswordType: Boolean,
     value: String,
     onValueChange: (String) -> Unit,
-    isError: String?
+    isError: String? = null
 ) {
     var passwordVisibility by remember { mutableStateOf(false) }
 

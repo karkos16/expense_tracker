@@ -23,6 +23,7 @@ import com.example.expensetracker.ui.screens.authScreens.signUpScreen.signUpComp
 import com.example.expensetracker.ui.screens.authScreens.signUpScreen.signUpComponents.TermsAgreement
 import com.example.expensetracker.ui.screens.destinations.OnBoardingScreenDestination
 import com.example.expensetracker.ui.screens.onBoardingScreens.components.LongButton
+import com.example.expensetracker.ui.theme.BaseDark50
 import com.example.expensetracker.ui.theme.BaseLight20
 import com.example.expensetracker.ui.theme.BaseLight80
 import com.example.expensetracker.ui.theme.Violet100
@@ -65,6 +66,7 @@ fun SignUpScreen(
         .background(Color.White)) {
         TopNavigation(
             text = "Sign Up",
+            color = BaseDark50,
             onClickNavigation = {
                 navigator.navigate(OnBoardingScreenDestination()) {
                     popUpTo(OnBoardingScreenDestination.route)

@@ -22,6 +22,7 @@ import com.example.expensetracker.ui.screens.authScreens.authComponents.InputFie
 import com.example.expensetracker.ui.screens.authScreens.authComponents.TopNavigation
 import com.example.expensetracker.ui.screens.destinations.OnBoardingScreenDestination
 import com.example.expensetracker.ui.screens.onBoardingScreens.components.LongButton
+import com.example.expensetracker.ui.theme.BaseDark50
 import com.example.expensetracker.ui.theme.BaseLight20
 import com.example.expensetracker.ui.theme.BaseLight80
 import com.example.expensetracker.ui.theme.Violet100
@@ -40,7 +41,7 @@ fun LoginScreen(
         val state = viewModel.state
         val context = LocalContext.current
         LaunchedEffect(key1 = Dispatchers.IO) {
-            viewModel.validationEvents.collect { event ->
+            viewModel.validationEvents.collect { _ ->
                 if (viewModel.login()) {
                     Toast.makeText(context, "Login successful", Toast.LENGTH_LONG).show()
                 } else {
@@ -51,6 +52,7 @@ fun LoginScreen(
 
         TopNavigation(
             text = "Login",
+            color = BaseDark50,
             onClickNavigation = {
                 navigator.navigate(OnBoardingScreenDestination()) {
                     popUpTo(OnBoardingScreenDestination.route)
